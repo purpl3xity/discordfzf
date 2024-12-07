@@ -91,7 +91,7 @@ class MyClient(discord.Client):
 
         await self.print_old_messages()
 
-        start_input_handling()
+        startinputhandling()
 
     async def print_old_messages(self):
         if selectedchannelobj is None:
@@ -106,11 +106,11 @@ class MyClient(discord.Client):
             print(message.content)
 
     async def on_message(self, message):
-        if message.channel.name != selectedchannel or canoutput == False:
+        if message.channel.id != selectedchannelobj.id or canoutput == False:
             return
         ftime = datetime.datetime.now().strftime("%H:%M")
         sender = message.author
-        print(f"\033[1m{sender} \033[38;5;250mToday at {ftime}\033[0m")
+        print(f"\033[1m{sender}\033[0m \033[38;5;250mToday at {ftime}\033[0m")
         print(message.content)
 
 def trylogin():
@@ -143,7 +143,7 @@ def login():
 async def inputhandling():
     global selectedchannelobj
     while True:
-        inp = input(f"Message #{selectedchannel}: ")
+        inp = await asyncio.to_thread(input)
         if inp == "`SWITCHSERVER":
             selectserver()
         elif inp == "`SWITCHCHANNEL":
@@ -155,9 +155,8 @@ async def inputhandling():
         else:
             print("Channel not found!")
 
-def start_input_handling():
-    loop = asyncio.get_event_loop()
-    loop.create_task(inputhandling())
+def startinputhandling():
+    asyncio.create_task(inputhandling())
 
 client = MyClient()
 login()
