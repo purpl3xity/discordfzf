@@ -1,5 +1,5 @@
 # discordfzf
-a terminal discord client that uses [discord.py-self](https://github.com/dolfies/discord.py-self)
+a terminal discord client that uses [discord.py-self](https://github.com/dolfies/discord.py-self)<br>
 **note:**
 discord.py-self is against the tos, use this at your own risk
 
@@ -11,7 +11,7 @@ discord.py-self is against the tos, use this at your own risk
 * old messages
 
 ## some controls
-type \`SWITCHSERVER to select a different server and channel\n
+type \`SWITCHSERVER to select a different server and channel<br>
 type \`SWITCHCHANNEL to select a different channel
 
 ## requirements
